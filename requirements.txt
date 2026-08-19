@@ -1,0 +1,21 @@
+# Exact versions from the Google Colab environment used to produce the results.
+# Core scientific stack
+numpy==2.0.2
+pandas==2.2.2
+scipy==1.16.3
+scikit-learn==1.6.1
+matplotlib==3.10.0
+
+# Imaging
+pillow==11.3.0
+
+# Notebooks
+nbformat==5.10.4
+
+# Deep learning
+# The study ran on the CUDA 12.8 build (torch 2.11.0+cu128, torchvision 0.26.0+cu128).
+# The version numbers are pinned below; install the build matching your own
+# hardware (CPU or your CUDA version) from https://pytorch.org/get-started/locally/
+# On Google Colab these are already present and need no installation.
+torch==2.11.0
+torchvision==0.26.0
