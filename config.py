@@ -14,7 +14,7 @@ import random
 # Path Configuration
 # ---------------------------------------------------------------------------
 # Set this path to your parent data directory containing kermany/, togunwa/, and musa/
-DATA_ROOT = Path("/content/drive/MyDrive/data")
+DATA_ROOT = Path("/content/drive/MyDrive/MSc AI DISSERTATION/data")
 
 # Infer repository root based on file position
 REPO_ROOT = Path(__file__).resolve().parent
@@ -111,6 +111,18 @@ SEEDS = [42, 43, 44]
 # Styling Palette
 BRAND = {"C1": "#B70D50", "C2": "#621B40", "C3": "#0070C0"}
 
+# Bin-count bounds for sample-size-scaled ECE (n_bins ~ sqrt(n), clipped).
+# Fixed 15-bin ECE is retained only as a labelled secondary diagnostic,
+# never as the primary calibration estimate on small evaluation sets.
+ECE_MIN_BINS = 5
+ECE_MAX_BINS = 15
+# Bootstrap repetitions for the ECE bias-correction procedure (bootstrap_debiased_ece).
+DEBIAS_ECE_N_BOOT = 200
+# Repetitions for the Kermany-624 -> n=30 size-matched subsampling sanity check.
+SUBSAMPLE_N_REPEATS = 500
+# TOST equivalence margin = EQUIVALENCE_MARGIN_MULTIPLIER * (observed per-seed
+# SD of a fixed configuration). Pre-registered here rather than chosen per test.
+EQUIVALENCE_MARGIN_MULTIPLIER = 2.0
 
 # ---------------------------------------------------------------------------
 # Helper Functions
