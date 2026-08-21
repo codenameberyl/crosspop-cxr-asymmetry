@@ -1,0 +1,5 @@
+test,method,estimate,ci_lo,ci_hi,p_value,p_holm,significant
+Transfer-gap asymmetry (mobilenet_v2),Run-level bootstrap (paired per-seed),0.182,0.039,0.336,,,True
+Transfer-gap asymmetry (efficientnet_b0),Run-level bootstrap (paired per-seed),0.382,0.165,0.525,,,True
+"Architecture contrast AUROC (N2K, ensemble-averaged)",DeLong,-0.17,,,0.0,0.0,True
+"Architecture contrast accuracy (N2K, ensemble-averaged)",McNemar,,,,0.0,0.0,True

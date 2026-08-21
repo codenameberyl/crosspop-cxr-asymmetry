@@ -1,5 +1,0 @@
-direction,probs,n_pooled,ece,ece_lo,ece_hi,ece_adaptive,ece_adaptive_lo,ece_adaptive_hi
-K2N,raw,540,0.249,0.215,0.291,0.238,0.205,0.283
-K2N,calibrated,540,0.304,0.271,0.349,0.29,0.258,0.336
-N2K,raw,18720,0.143,0.14,0.147,0.143,0.14,0.147
-N2K,calibrated,18720,0.139,0.136,0.142,0.139,0.136,0.142

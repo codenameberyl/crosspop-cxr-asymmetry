@@ -1,0 +1,3 @@
+arch,n2k_subsampled_mean_ece,n2k_subsampled_lo,n2k_subsampled_hi,k2n_actual_ece,gap_survives_size_matching
+mobilenet_v2,0.22,0.092,0.37,0.272,False
+efficientnet_b0,0.184,0.072,0.32,0.224,False

@@ -1,0 +1,11 @@
+condition,arch,n_runs,auroc_mean,auroc_lo,auroc_hi
+K2K,efficientnet_b0,9,0.964,0.954,0.973
+K2N,efficientnet_b0,9,0.61,0.541,0.689
+K2N_full,efficientnet_b0,9,0.632,0.609,0.656
+N2K,efficientnet_b0,15,0.73,0.676,0.782
+N2N,efficientnet_b0,15,0.702,0.645,0.754
+K2K,mobilenet_v2,9,0.961,0.948,0.973
+K2N,mobilenet_v2,9,0.644,0.587,0.709
+K2N_full,mobilenet_v2,9,0.629,0.612,0.644
+N2K,mobilenet_v2,15,0.59,0.495,0.676
+N2N,mobilenet_v2,15,0.725,0.678,0.769

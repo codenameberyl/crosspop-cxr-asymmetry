@@ -1,3 +1,0 @@
-arch,mean_conf_in,mean_conf_ood,ood_detect_auroc
-efficientnet_b0,0.834,0.831,0.53
-mobilenet_v2,0.932,0.959,0.438

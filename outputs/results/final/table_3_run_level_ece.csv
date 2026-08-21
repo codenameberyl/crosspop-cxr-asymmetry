@@ -1,0 +1,11 @@
+condition,arch,n_runs,ece_debiased_mean,ece_lo,ece_hi
+K2K,efficientnet_b0,9,0.056,0.034,0.089
+K2N,efficientnet_b0,9,0.227,0.166,0.281
+K2N_full,efficientnet_b0,9,0.206,0.175,0.236
+N2K,efficientnet_b0,15,0.151,0.124,0.178
+N2N,efficientnet_b0,15,0.061,0.029,0.101
+K2K,mobilenet_v2,9,0.09,0.074,0.108
+K2N,mobilenet_v2,9,0.27,0.227,0.314
+K2N_full,mobilenet_v2,9,0.267,0.227,0.302
+N2K,mobilenet_v2,15,0.183,0.132,0.229
+N2N,mobilenet_v2,15,0.082,0.04,0.126

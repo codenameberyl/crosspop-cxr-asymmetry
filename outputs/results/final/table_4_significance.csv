@@ -1,9 +1,0 @@
-test,method,estimate,ci_lo,ci_hi,p_value,p_holm,significant
-Direction Contrast (AUROC),Bootstrap Diff CI,0.025,-0.055,0.11,,,False
-Direction Contrast (ECE (Equal-Width)),Bootstrap Diff CI,-0.128,-0.193,-0.067,,,True
-Direction Contrast (ECE (Adaptive)),Bootstrap Diff CI,-0.112,-0.18,-0.047,,,True
-Architecture Contrast AUROC (N2K),DeLong,-0.17,,,0.0,0.0,True
-Architecture Contrast Accuracy (N2K),McNemar,,,,0.0,0.0,True
-Size x Direction Interaction (AUROC),Bootstrap Diff-of-Gaps CI,-0.041,-0.102,0.02,,,False
-Size x Direction Interaction (ECE (Equal-Width)),Bootstrap Diff-of-Gaps CI,-0.032,-0.093,0.034,,,False
-Size x Direction Interaction (ECE (Adaptive)),Bootstrap Diff-of-Gaps CI,-0.018,-0.082,0.047,,,False
