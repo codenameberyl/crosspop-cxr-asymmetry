@@ -64,7 +64,9 @@ def _bin_stats(y_true, y_prob, n_bins):
 
 
 def expected_calibration_error(y_true, y_prob, n_bins=15):
-    """Calculate standard Equal-Width Expected Calibration Error (ECE) (Guo et al., 2017)."""
+    """Standard Equal-Width ECE (Guo et al., 2017). Upward-biased at small n
+    (few samples per bin) -- see bootstrap_debiased_ece and n_bins_for_sample_size
+    for small-evaluation-set corrections."""
     conf, acc, weight = _bin_stats(y_true, y_prob, n_bins)
     if len(conf) == 0:
         return float("nan")
@@ -72,11 +74,7 @@ def expected_calibration_error(y_true, y_prob, n_bins=15):
 
 
 def adaptive_calibration_error(y_true, y_prob, n_bins=15):
-    """Equal-frequency (adaptive) ECE: bins hold equal counts, not equal widths.
-
-    Bin edges are quantiles of the predicted probabilities, ensuring no bin is empty.
-    Handles duplicate quantile edges caused by heavily clustered predictions using np.unique.
-    """
+    """Equal-frequency (adaptive) ECE: bins hold equal counts, not equal widths."""
     y_true = np.asarray(y_true, dtype=float)
     y_prob = np.asarray(y_prob, dtype=float)
     n = len(y_prob)
@@ -132,8 +130,40 @@ def reliability_curve(y_true, y_prob, n_bins=15):
     return conf, acc
 
 
+# Small-sample calibration corrections
+def n_bins_for_sample_size(n, min_bins=5, max_bins=15):
+    """Bin count scaled to roughly sqrt(n), clipped to [min_bins, max_bins].
+    Callers should pass min_bins/max_bins from config (ECE_MIN_BINS/ECE_MAX_BINS)
+    rather than relying on these defaults, to keep tuning centralised in config.py."""
+    return int(np.clip(round(np.sqrt(max(n, 1))), min_bins, max_bins))
+
+
+def bootstrap_debiased_ece(y_true, y_prob, n_bins=15, n_boot=200, seed=42):
+    """Bootstrap bias-corrected ECE: debiased = ECE(full) - [mean(bootstrap ECE) - ECE(full)].
+    Standard equal-width ECE is upward-biased at small n; this estimates that
+    bias via the bootstrap and subtracts it. Most relevant for the 30-image
+    K2N Togunwa holdout evaluations.
+
+    Returns (debiased_ece, raw_ece, estimated_bias).
+    """
+    y_true = np.asarray(y_true, dtype=float)
+    y_prob = np.asarray(y_prob, dtype=float)
+    n = len(y_true)
+    if n == 0:
+        return float("nan"), float("nan"), float("nan")
+    ece_full = expected_calibration_error(y_true, y_prob, n_bins)
+    rng = np.random.default_rng(seed)
+    boot_eces = np.empty(n_boot)
+    for i in range(n_boot):
+        idx = rng.integers(0, n, size=n)
+        boot_eces[i] = expected_calibration_error(y_true[idx], y_prob[idx], n_bins)
+    bias = float(boot_eces.mean()) - ece_full
+    return float(ece_full - bias), float(ece_full), float(bias)
+
+
 def all_metrics(y_true, y_prob, fixed_sensitivity=0.95, n_bins=15):
-    """Compute complete metric performance suite including both standard and adaptive ECE."""
+    """Compute complete metric performance suite including standard, adaptive,
+    and (if n_bins was chosen via n_bins_for_sample_size) sample-size-scaled ECE."""
     return {
         "auroc": auroc(y_true, y_prob),
         "specificity_at_95_sens": specificity_at_sensitivity(y_true, y_prob, fixed_sensitivity),
