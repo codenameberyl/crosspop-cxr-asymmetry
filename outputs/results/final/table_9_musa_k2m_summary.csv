@@ -1,0 +1,3 @@
+arch,n_runs,auroc_mean,auroc_lo,auroc_hi,ece_debiased_mean,ece_lo,ece_hi
+mobilenet_v2,18,0.718,0.626,0.802,0.378,0.33,0.42
+efficientnet_b0,18,0.818,0.764,0.87,0.238,0.189,0.287
