@@ -43,6 +43,7 @@ _CONDITION_MAP = {
     ("K2N", "togunwa_full"): "K2N_full",
     ("N2K", "kermany_test"): "N2K",
     ("N2K", "togunwa_holdout"): "N2N",
+    ("K2N", "musa_id_test"): "K2M",
 }
 
 def derive_condition(direction, target):
