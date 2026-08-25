@@ -106,7 +106,7 @@ ECE_N_BINS = 15
 
 # Reproducibility
 SEED = 42
-SEEDS = [42, 43, 44]
+SEEDS = [42, 43, 44, 45, 46, 47]
 
 # Styling Palette
 BRAND = {"C1": "#B70D50", "C2": "#621B40", "C3": "#0070C0"}
